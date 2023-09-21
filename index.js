@@ -17,13 +17,29 @@ const init = ()  => {
         if (task=="view all roles") db.getRoles().then(init);
         if (task=="view all employees") db.getEmployees().then(init);
 
-        if (task=="add a department") 
-        if (task=="add a role") 
-        if (task=="add an employee") 
-        if (task=="update an employee role") 
+        if (task=="add a department").then(addDepartment());
+        if (task=="add a role").then(addRole());
+        if (task=="add an employee").then(addEmployee());
+        if (task=="update an employee role").then(updateRole());
     })
 };
 
 init();
+
+function addDepartment() {
+
+}
+
+function addRole() {
+
+}
+
+function addEmployee() {
+
+}
+
+function updateRole() {
+
+}
 
 //Export array into a file
