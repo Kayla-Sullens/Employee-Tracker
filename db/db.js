@@ -2,17 +2,21 @@ const connection = require("../config/connection");
 const cTable = require("console.table");
 
 class DB {
-    constructor (connection){
+    constructor(connection) {
         this.db = connection;
     }
 
-    getDepts = () => 
+    getDepts = () =>
         this.db.promise().query("SELECT * FROM department")
-            .then(([data])=> console.table(data));
-            
+            .then(([data]) => console.table(data));
 
-    getRoles = () => 
-    // Do a join here
+    listDepts = () =>
+        this.db.promise().query("SELECT name, id AS value FROM department")
+            .then(([data]) => console.table(data));
+
+
+    getRoles = () =>
+        // Do a join here
         this.db.promise().query(`
             SELECT 
                  r.id,
@@ -23,11 +27,11 @@ class DB {
             JOIN department AS d
             ON r.department_id = d.id;
         `)
-            .then(([data])=> console.table(data));
-            
+            .then(([data]) => console.table(data));
 
-    getEmployees = () => 
-     // Do a join here
+
+    getEmployees = () =>
+        // Do a join here
         this.db.promise().query(`
             SELECT 
                 e.id,
@@ -42,11 +46,17 @@ class DB {
             ON e.role_id = r.id
             JOIN department AS d
             ON r.department_id = d.id
-            JOIN employee AS e2
+            LEFT JOIN employee AS e2
             ON e.manager_id = e2.id;
             `)
-            .then(([data])=> console.table(data));
-            
+            .then(([data]) => console.table(data));
+
+    addDept = ({ name }) =>
+        this.db.promise().query(`INSERT INTO department SET ?`, { name });
+
+    addRole = ({ title }) =>
+        this.db.promise().query(`INSERT INTO role SET ?`, { title });
+
 }
 
 module.exports = new DB(connection);
