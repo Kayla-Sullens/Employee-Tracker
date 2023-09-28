@@ -53,16 +53,70 @@ const init = () => {
 init();
 
 function addDepartment() {
-
+  inquirer.prompt([
+    {
+      name: "dept",
+      type: "input",
+      message: "Please enter the department you would like to add:"
+    }
+    ]).then(function(answer) {
 }
 
 function addRole() {
-
+  inquirer.prompt([
+    {
+      name: "role",
+      type: "input",
+      message: "Please enter the role you would like to add:"
+    },
+    
+    {
+        name: "dept",
+        type: "list",
+        message: "Which department would you like to add this role to?",
+        choices: 
+    },
+    
+    {
+      name: "salary",
+      type: "number",
+      message: "Please enter the salary for this role:"
+    },
+    
+     ]).then(function(answer) {
 }
 
 function addEmployee() {
-
-}
+  
+    inquirer.prompt([
+    {
+      name: "firstname",
+      type: "input",
+      message: "What is the employee's first name?"
+    },
+  
+    {
+        name: "lastname",
+        type: "input",
+        message: "What is the employee's last name?"
+    },
+  
+    {
+        name: "role",
+        type: "list",
+        message: "What is the employee's role?",
+        choices: 
+      },
+  
+      {
+        name: "reportingTo",
+        type: "list",
+        message: "Who is the employee's manager?",
+        choices: 
+      }
+    
+     ]).then(function(answer) {
+};
 
 function updateRole() {
 
