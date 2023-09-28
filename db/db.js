@@ -16,7 +16,6 @@ class DB {
 
 
     getRoles = () =>
-        // Do a join here
         this.db.promise().query(`
             SELECT 
                  r.id,
@@ -31,7 +30,6 @@ class DB {
 
 
     getEmployees = () =>
-        // Do a join here
         this.db.promise().query(`
             SELECT 
                 e.id,
@@ -56,6 +54,9 @@ class DB {
 
     addRole = ({ title }) =>
         this.db.promise().query(`INSERT INTO role SET ?`, { title });
+
+    addEmployee = ({ title }) =>
+        this.db.promise().query(`INSERT INTO employee SET ?`, { title });
 
 }
 
