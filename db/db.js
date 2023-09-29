@@ -52,8 +52,8 @@ class DB {
     addDept = ({ name }) =>
         this.db.promise().query(`INSERT INTO department SET ?`, { name });
 
-    addRole = ({ title }) =>
-        this.db.promise().query(`INSERT INTO role SET ?`, { title });
+    addRole = ( role ) =>
+        this.db.promise().query(`INSERT INTO role SET ?`, role);
 
     addEmployee = ({ title }) =>
         this.db.promise().query(`INSERT INTO employee SET ?`, { title });

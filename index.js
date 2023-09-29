@@ -22,7 +22,9 @@ const init = () => {
           db.addDept(ans).then(init);
           break;
         case "add a role":
-          db.addRole(ans).then(init);
+          const role = {title: ans.title, salary: ans.salary, department_id: null}
+          db.addRole(role).then(init);
+          
           break;
         case "add an employee":
           db.addEmployee(ans).then(init);
