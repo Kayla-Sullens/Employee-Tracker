@@ -26,7 +26,7 @@ const init = () => {
           db.addRole(role).then(init);
           break;
         case "add an employee":
-          const employee = {first_name: ans.first_name, last_name: ans.last_name, role_id: null, department_id: null}
+          const employee = {first_name: ans.first_name, last_name: ans.last_name, role_id: null, manager_id: null}
           db.addEmployee(employee).then(init);
           break;
         case "update an employee role":
