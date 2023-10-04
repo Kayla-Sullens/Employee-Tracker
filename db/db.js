@@ -65,8 +65,8 @@ class DB {
     addEmployee = ({ first_name,last_name,role_id,manager_id }) =>
         this.db.promise().query(`INSERT INTO employee SET ?`, { first_name,last_name,role_id,manager_id });
         
-    updateRole = ({ update }) =>
-        this.db.promise().query(`INSERT INTO employee SET ?`, update);
+    updateRole = ({ id, role_id, manager_id }) =>
+        this.db.promise().query(`UPDATE employee SET ? WHERE ?`, [{ id, role_id, manager_id }, {id}]);
 
 }
 
