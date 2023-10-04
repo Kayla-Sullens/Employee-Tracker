@@ -12,7 +12,7 @@ class DB {
 
     listDepts = () =>
         this.db.promise().query("SELECT name, id AS value FROM department")
-            .then(([data]) => console.table(data));
+            .then(([data]) => data);
 
 
     getRoles = () =>
@@ -27,6 +27,10 @@ class DB {
             ON r.department_id = d.id;
         `)
             .then(([data]) => console.table(data));
+
+    listRoles = () =>
+        this.db.promise().query("SELECT title name, id value FROM role")
+            .then(([data]) => data);
 
 
     getEmployees = () =>
@@ -49,15 +53,20 @@ class DB {
             `)
             .then(([data]) => console.table(data));
 
+    listEmps = () =>
+        this.db.promise().query('SELECT CONCAT(first_name, " ", last_name) name, id value FROM employee').then(([data]) => data);
+
     addDept = ({ name }) =>
         this.db.promise().query(`INSERT INTO department SET ?`, { name });
 
-    addRole = ( role ) =>
-        this.db.promise().query(`INSERT INTO role SET ?`, role);
+    addRole = ({ title, salary, department_id }) =>
+        this.db.promise().query(`INSERT INTO role SET ?`, { title, salary, department_id });
 
-    addEmployee = ({ employee }) =>
-        this.db.promise().query(`INSERT INTO employee SET ?`, employee);
-
+    addEmployee = ({ first_name,last_name,role_id,manager_id }) =>{
+        console.log({ first_name,last_name,role_id,manager_id });
+        this.db.promise().query(`INSERT INTO employee SET ?`, { first_name,last_name,role_id,manager_id });
+        
+    }
     updateRole = ({ update }) =>
         this.db.promise().query(`INSERT INTO employee SET ?`, update);
 

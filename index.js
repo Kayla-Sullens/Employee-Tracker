@@ -22,16 +22,13 @@ const init = () => {
           db.addDept(ans).then(init);
           break;
         case "add a role":
-          const role = {title: ans.title, salary: ans.salary, department_id: null}
-          db.addRole(role).then(init);
+          db.addRole(ans).then(init);
           break;
         case "add an employee":
-          const employee = {first_name: ans.first_name, last_name: ans.last_name, role_id: null, manager_id: null}
-          db.addEmployee(employee).then(init);
+          db.addEmployee(ans).then(init);
           break;
         case "update an employee role":
-          const update = {title: ans.title, salary: ans.salary, department_id: null}
-          db.updateRole(update).then(init);
+          db.updateRole(ans).then(init);
           break;
         default:
           console.log("Invalid task selected");
