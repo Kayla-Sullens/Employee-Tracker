@@ -62,11 +62,9 @@ class DB {
     addRole = ({ title, salary, department_id }) =>
         this.db.promise().query(`INSERT INTO role SET ?`, { title, salary, department_id });
 
-    addEmployee = ({ first_name,last_name,role_id,manager_id }) =>{
-        console.log({ first_name,last_name,role_id,manager_id });
+    addEmployee = ({ first_name,last_name,role_id,manager_id }) =>
         this.db.promise().query(`INSERT INTO employee SET ?`, { first_name,last_name,role_id,manager_id });
         
-    }
     updateRole = ({ update }) =>
         this.db.promise().query(`INSERT INTO employee SET ?`, update);
 
